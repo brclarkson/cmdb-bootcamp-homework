@@ -23,6 +23,6 @@ CORES=4
 for i in {893..916} # run for each sequence
 do
   echo fastqc $FASTQ_DIR/$SAMPLE_PREFIX$i\.fastq.gz -o $OUTPUT_DIR
-  echo tophat -p $CORES -G $OUTPUT_DIR/$ANNOTATION -o $OUTPUT_DIR --no-novel-juncs --segment-length 20 $GENOME_DIR/$GENOME_FILE $FASTQ_DIR/$SAMPLE_PREFIX$i\.fastq
+  echo tophat -p $CORES -G $OUTPUT_DIR/$ANNOTATION -o $OUTPUT_DIR/th_$i --no-novel-juncs --segment-length 20 $GENOME_DIR/$GENOME_FILE $FASTQ_DIR/$SAMPLE_PREFIX$i\.fastq
   echo cufflinks -p $CORES -G $GENOME_DIR/$GENOME_FILE -o $OUTPUT_DIR $OUTPUT_DIR/accepted_hits.bam
 done
