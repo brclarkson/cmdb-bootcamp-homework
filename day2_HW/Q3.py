@@ -8,6 +8,6 @@ sxl_df = pd.read_table("/Users/cmdb/cmdb-bootcamp-homework/day2_HW/female_sxl.cs
 
 
 plt.figure()
-# FPKM data is contained in column 9, so I specify that I want the 9th value in each row for the y data
+# FPKM data is contained in column 9 (starting at 0), so I specify that I want the 9th value in each row for the y data
 sxl_df.plot( y=9 )
 plt.savefig("female_sxl_plot.png")
