@@ -12,16 +12,7 @@ f14B_loc = "/Users/cmdb/data/results/SRR072911_clout/genes.fpkm_tracking"
 f14C_loc = "/Users/cmdb/data/results/SRR072913_clout/genes.fpkm_tracking"
 f14D_loc = "/Users/cmdb/data/results/SRR072915_clout/genes.fpkm_tracking"
 
-'''
-df_10 = pd.read_table( f10_loc )
-df_11 = pd.read_table( f11_loc )
-df_12 = pd.read_table( f12_loc )
-df_13 = pd.read_table( f13_loc )
-df_14A = pd.read_table( f14A_loc )
-df_14B = pd.read_table( f14B_loc )
-df_14C = pd.read_table( f14C_loc )
-df_14D = pd.read_table( f14D_loc )
-'''
+# make list of all files
 file_list = []
 file_list.append(f10_loc)
 file_list.append(f11_loc)
@@ -32,6 +23,7 @@ file_list.append(f14B_loc)
 file_list.append(f14C_loc)
 file_list.append(f14D_loc)
 
+# cycle through files and pull out rows if they contain Sxl
 sxl_list = []
 for i in file_list:    
     with open(i) as file:
@@ -40,6 +32,7 @@ for i in file_list:
                 row = row.rstrip()
                 sxl_list.append(row)
 
+#make list with each entry in list being a list in which each entry is a column entry for that row
 list_of_lists = []
 for i in sxl_list:
     list_of_fields = []
@@ -48,6 +41,7 @@ for i in sxl_list:
         list_of_fields.append(field)
     list_of_lists.append(list_of_fields)
 
+# write sxl data to csv file    
 with open("female_sxl.csv", "wb") as f:
     writer = csv.writer(f, delimiter = "\t")
     writer.writerows(list_of_lists)
