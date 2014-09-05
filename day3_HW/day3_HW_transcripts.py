@@ -2,6 +2,10 @@
 
 import sys
 from fasta import FASTAReader
+  
+ """
+ Take out the 100 longest sequences in a FASTA file
+ """ 
         
 reader = FASTAReader( sys.stdin )
 
@@ -15,4 +19,5 @@ seq_sort = sorted(seq_list, key = len, reverse=True)
 
 # take out hundred highest list entries and put in list
 first_hundred = seq_sort[:100]
+
 
